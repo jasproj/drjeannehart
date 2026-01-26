@@ -1,1 +1,1605 @@
-1
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Jeanne Hart, DVM | Mobile Veterinarian | Tampa Bay</title>
+    <meta name="description" content="Stress-free veterinary care at your doorstep. Dr. Jeanne Hart brings 24 years of experience directly to your home in Tampa Bay. Specializing in senior pets, anxious animals, and compassionate end-of-life care.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --sage: #5B8A72;
+            --sage-dark: #4A7260;
+            --cream: #FAF7F2;
+            --cream-dark: #F5F0E8;
+            --terracotta: #E07A5F;
+            --terracotta-dark: #C96A52;
+            --charcoal: #2D3436;
+            --charcoal-light: #636E72;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* Organic blob shapes */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .blob-1 {
+            width: 600px;
+            height: 600px;
+            background: var(--sage);
+            top: -200px;
+            right: -200px;
+        }
+
+        .blob-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--terracotta);
+            bottom: -100px;
+            left: -100px;
+            opacity: 0.2;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(250, 247, 242, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: box-shadow 0.3s ease;
+        }
+
+        header.scrolled {
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--charcoal);
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--sage);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .logo-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: white;
+        }
+
+        .logo-text {
+            font-family: 'Fraunces', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .logo-text span {
+            display: block;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: var(--charcoal-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--sage);
+        }
+
+        .nav-cta {
+            background: var(--terracotta);
+            color: white !important;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            transition: background 0.2s, transform 0.2s !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--terracotta-dark);
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--charcoal);
+            margin: 6px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            color: var(--charcoal);
+        }
+
+        .hero-content h1 span {
+            color: var(--sage);
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--charcoal-light);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .badge svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--sage);
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--terracotta);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--terracotta-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(224, 122, 95, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--charcoal);
+            border: 2px solid var(--charcoal);
+        }
+
+        .btn-secondary:hover {
+            background: var(--charcoal);
+            color: var(--white);
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-image-container {
+            position: relative;
+            background: linear-gradient(135deg, var(--sage) 0%, var(--sage-dark) 100%);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            padding: 2rem;
+            animation: morph 8s ease-in-out infinite;
+        }
+
+        @keyframes morph {
+            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+        }
+
+        .hero-image-placeholder {
+            width: 100%;
+            aspect-ratio: 4/5;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero-image-placeholder svg {
+            width: 80px;
+            height: 80px;
+            fill: rgba(255,255,255,0.5);
+            margin-bottom: 1rem;
+        }
+
+        .hero-image-placeholder p {
+            font-size: 0.875rem;
+            opacity: 0.7;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: white;
+            padding: 1rem 1.25rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .floating-card-1 {
+            top: 10%;
+            right: -20px;
+            animation-delay: 0s;
+        }
+
+        .floating-card-2 {
+            bottom: 15%;
+            left: -30px;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating-card .stars {
+            color: #FFD700;
+            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .floating-card .text {
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            background: var(--sage);
+            color: white;
+            padding: 1.5rem 2rem;
+        }
+
+        .trust-bar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 500;
+        }
+
+        .trust-item svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 2rem;
+            background: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--charcoal-light);
+            font-size: 1.1rem;
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--cream);
+            padding: 2rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--sage);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--sage);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-icon svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .service-card p {
+            color: var(--charcoal-light);
+            font-size: 0.95rem;
+        }
+
+        /* Why Mobile Section */
+        .why-mobile {
+            padding: 6rem 2rem;
+            background: var(--cream);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-mobile-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .why-mobile-content h2 {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .why-mobile-content h2 span {
+            color: var(--terracotta);
+        }
+
+        .why-mobile-content > p {
+            color: var(--charcoal-light);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .benefit-list {
+            list-style: none;
+        }
+
+        .benefit-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--sage);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .benefit-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        .benefit-text h4 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .benefit-text p {
+            color: var(--charcoal-light);
+            font-size: 0.9rem;
+        }
+
+        .truck-illustration {
+            background: var(--white);
+            border-radius: 30px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+        }
+
+        .truck-illustration svg {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+        }
+
+        .truck-caption {
+            margin-top: 1.5rem;
+            font-style: italic;
+            color: var(--charcoal-light);
+        }
+
+        /* Pet Gallery */
+        .pet-gallery {
+            padding: 6rem 0;
+            background: var(--white);
+            overflow: hidden;
+        }
+
+        .pet-gallery .section-header {
+            padding: 0 2rem;
+        }
+
+        .gallery-scroll {
+            display: flex;
+            gap: 1.5rem;
+            animation: scroll 30s linear infinite;
+            width: max-content;
+        }
+
+        .gallery-scroll:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .gallery-item {
+            width: 280px;
+            height: 280px;
+            border-radius: 20px;
+            overflow: hidden;
+            flex-shrink: 0;
+            position: relative;
+            background: var(--cream);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+        }
+
+        .gallery-placeholder svg {
+            width: 60px;
+            height: 60px;
+            fill: var(--sage);
+            opacity: 0.5;
+        }
+
+        .gallery-placeholder span {
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--charcoal-light);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 6rem 2rem;
+            background: var(--sage);
+            color: white;
+            position: relative;
+        }
+
+        .testimonials .section-header h2 {
+            color: white;
+        }
+
+        .testimonials .section-header p {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .testimonial-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial-stars {
+            color: #FFD700;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+
+        .author-info .name {
+            font-weight: 600;
+        }
+
+        .author-info .pet {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+
+        /* Service Area */
+        .service-area {
+            padding: 6rem 2rem;
+            background: var(--cream);
+        }
+
+        .area-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .area-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        .area-tag {
+            background: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.2s;
+        }
+
+        .area-tag:hover {
+            background: var(--sage);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .area-map {
+            background: var(--white);
+            border-radius: 30px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .area-map-placeholder {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--charcoal-light);
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 2rem;
+            background: var(--white);
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, var(--sage) 0%, var(--sage-dark) 100%);
+            border-radius: 30px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .about-image-placeholder {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .about-image-placeholder svg {
+            width: 80px;
+            height: 80px;
+            fill: rgba(255,255,255,0.5);
+            margin-bottom: 1rem;
+        }
+
+        .about-content h2 {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content > p {
+            color: var(--charcoal-light);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-credentials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .credential {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .credential svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--sage);
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--terracotta) 0%, var(--terracotta-dark) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--terracotta);
+        }
+
+        .btn-white:hover {
+            background: var(--cream);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-outline-white {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-outline-white:hover {
+            background: white;
+            color: var(--terracotta);
+        }
+
+        .cta-phone {
+            margin-top: 2rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .cta-phone a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.7);
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .footer-column h4 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-column ul a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-column ul a:hover {
+            color: white;
+        }
+
+        .footer-contact p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-contact a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom p {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.875rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .social-links a:hover {
+            background: var(--sage);
+        }
+
+        .social-links svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        /* Mobile CTA Bar */
+        .mobile-cta-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--terracotta);
+            padding: 1rem;
+            z-index: 1000;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+        }
+
+        .mobile-cta-bar a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .mobile-cta-bar svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-container,
+            .why-mobile-container,
+            .area-container,
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-visual {
+                order: -1;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 6rem 1.5rem 3rem;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .trust-bar-content {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .mobile-cta-bar {
+                display: block;
+            }
+
+            footer {
+                padding-bottom: 5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                </div>
+                <div class="logo-text">
+                    Dr. Jeanne Hart
+                    <span>Mobile Veterinarian</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#areas">Service Area</a></li>
+                <li><a href="tel:8135988505" class="nav-cta">📞 (813) 598-8505</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="hero-container">
+            <div class="hero-content fade-in">
+                <h1>Stress-Free Vet Care <span>At Your Doorstep</span></h1>
+                <p>Skip the waiting room. Dr. Jeanne Hart brings 24 years of veterinary expertise directly to your home in a fully-equipped mobile clinic.</p>
+                <div class="hero-badges">
+                    <div class="badge">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        95+ Five-Star Reviews
+                    </div>
+                    <div class="badge">
+                        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+                        24 Years Experience
+                    </div>
+                    <div class="badge">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        Serving Tampa Bay
+                    </div>
+                </div>
+                <div class="hero-ctas">
+                    <a href="tel:8135988505" class="btn btn-primary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        Call Now
+                    </a>
+                    <a href="#services" class="btn btn-secondary">View Services</a>
+                </div>
+            </div>
+            <div class="hero-visual fade-in">
+                <div class="hero-image-container">
+                    <div class="hero-image-placeholder">
+                        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                        <p>Dr. Hart Photo<br><small>Coming Soon</small></p>
+                    </div>
+                    <div class="floating-card floating-card-1">
+                        <div class="stars">★★★★★</div>
+                        <div class="text">"Best mobile vet in Tampa!"</div>
+                    </div>
+                    <div class="floating-card floating-card-2">
+                        <div class="stars">🐕 🐈</div>
+                        <div class="text">15+ Years Mobile</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+        <div class="trust-bar-content">
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                Licensed Florida Veterinarian
+            </div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                Virginia-Maryland College of Vet Med
+            </div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                Serving Tampa Since 2010
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header fade-in">
+            <h2>Comprehensive Care, Zero Stress</h2>
+            <p>Everything your pet needs, delivered right to your driveway in our fully-equipped mobile clinic.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6z"/></svg>
+                </div>
+                <h3>Wellness Exams</h3>
+                <p>Comprehensive nose-to-tail physical exams to keep your pet healthy and catch issues early.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6z"/></svg>
+                </div>
+                <h3>Vaccinations</h3>
+                <p>Core and lifestyle vaccines tailored to your pet's needs. No unnecessary shots, ever.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><path d="M4.5 9.5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm15 7c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                </div>
+                <h3>Dermatology</h3>
+                <p>Dr. Hart's specialty. Skin allergies, ear infections, and coat issues diagnosed and treated.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                </div>
+                <h3>Senior Pet Care</h3>
+                <p>Specialized attention for aging pets. Arthritis management, organ function monitoring, quality of life support.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
+                </div>
+                <h3>Lab & Diagnostics</h3>
+                <p>In-house and send-out bloodwork, urinalysis, and fecal testing. Results you can trust.</p>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                </div>
+                <h3>End-of-Life Care</h3>
+                <p>Compassionate, peaceful in-home euthanasia. Say goodbye in the comfort and privacy of your own space.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Mobile Section -->
+    <section class="why-mobile">
+        <div class="why-mobile-container">
+            <div class="why-mobile-content fade-in">
+                <h2>The Vet Comes to <span>You</span></h2>
+                <p>Our fully-equipped mobile clinic means your pet stays calm in familiar surroundings — no scary car rides, no crowded waiting rooms, no barking strangers.</p>
+                <ul class="benefit-list">
+                    <li>
+                        <div class="benefit-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        </div>
+                        <div class="benefit-text">
+                            <h4>Less Stress for Your Pet</h4>
+                            <p>Pets examined in their comfort zone are calmer, making for better exams and happier animals.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="benefit-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        </div>
+                        <div class="benefit-text">
+                            <h4>Full Clinic in the Van</h4>
+                            <p>Not a house call — a complete mobile veterinary office parked in your driveway.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="benefit-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        </div>
+                        <div class="benefit-text">
+                            <h4>Perfect for Anxious Pets</h4>
+                            <p>Fearful dogs, shy cats, or pets that don't travel well — we come to them.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="benefit-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        </div>
+                        <div class="benefit-text">
+                            <h4>Convenient for You</h4>
+                            <p>No waiting rooms. No juggling carriers. We work around your schedule.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="truck-illustration fade-in">
+                <svg viewBox="0 0 400 200" fill="none">
+                    <!-- Simple vet truck illustration -->
+                    <rect x="50" y="80" width="200" height="80" rx="10" fill="#5B8A72"/>
+                    <rect x="250" y="100" width="80" height="60" rx="5" fill="#4A7260"/>
+                    <rect x="260" y="110" width="30" height="25" rx="3" fill="#87CEEB"/>
+                    <circle cx="100" cy="170" r="20" fill="#2D3436"/>
+                    <circle cx="100" cy="170" r="10" fill="#636E72"/>
+                    <circle cx="200" cy="170" r="20" fill="#2D3436"/>
+                    <circle cx="200" cy="170" r="10" fill="#636E72"/>
+                    <circle cx="300" cy="170" r="20" fill="#2D3436"/>
+                    <circle cx="300" cy="170" r="10" fill="#636E72"/>
+                    <!-- Cross symbol -->
+                    <rect x="130" y="100" width="40" height="10" fill="white"/>
+                    <rect x="145" y="85" width="10" height="40" fill="white"/>
+                    <!-- Paw print -->
+                    <circle cx="190" cy="115" r="8" fill="white"/>
+                    <circle cx="175" cy="105" r="5" fill="white"/>
+                    <circle cx="205" cy="105" r="5" fill="white"/>
+                    <circle cx="180" cy="130" r="4" fill="white"/>
+                    <circle cx="200" cy="130" r="4" fill="white"/>
+                </svg>
+                <p class="truck-caption">"It's like a vet office on wheels — right in your driveway!"</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pet Gallery -->
+    <section class="pet-gallery">
+        <div class="section-header fade-in">
+            <h2>Our Happy Patients</h2>
+            <p>Some of the amazing pets we've had the privilege to care for.</p>
+        </div>
+        <div class="gallery-scroll">
+            <!-- Placeholder items - duplicate set for infinite scroll effect -->
+            <div class="gallery-item"><div class="gallery-placeholder"><svg viewBox="0 0 24 24"><path d="M4.5 9.5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm15 7c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg><span>Pet Photo</span></div></div>
+            <div class="gallery-item"><div class="gallery-placeholder"><svg viewBox="0 0 24 24"><path d="M4.5 9.5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm15 7c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg><span>Pet Photo</span></div></div>
+            <div class="gallery-item"><div class="gallery-placeholder"><svg viewBox="0 0 24 24"><path d="M4.5 9.5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm15 7c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg><span>Pet Photo</span></div></div>
+            <div class="gallery-item"><div class="gallery-placeholder"><svg viewBox="0 0 24 24"><path d="M4.5 9.5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm15 7c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg><span>Pet Photo</span></div></div>
+            <div class="gallery-item"><div class="gallery-placeholder"><svg viewBox="0 0 24 24"><path d="M4.5 9.5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm15 7c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg><span>Pet Photo</span></div></div>
+            <div class="gallery-item"><div class="gallery-placeholder"><svg viewBox="0 0 24 24"><path d="M4.5 9.5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm15 7c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg><span>Pet Photo</span></div></div>
+            <div class="gallery-item"><div class="gallery-placeholder"><svg viewBox="0 0 24 24"><path d="M4.5 9.5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm15 7c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg><span>Pet Photo</span></div></div>
+            <div class="gallery-item"><div class="gallery-placeholder"><svg viewBox="0 0 24 24"><path d="M4.5 9.5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm15 7c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg><span>Pet Photo</span></div></div>
+            <!-- Duplicate for seamless loop -->
+            <div class="gallery-item"><div class="gallery-placeholder"><svg viewBox="0 0 24 24"><path d="M4.5 9.5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm15 7c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg><span>Pet Photo</span></div></div>
+            <div class="gallery-item"><div class="gallery-placeholder"><svg viewBox="0 0 24 24"><path d="M4.5 9.5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm15 7c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg><span>Pet Photo</span></div></div>
+            <div class="gallery-item"><div class="gallery-placeholder"><svg viewBox="0 0 24 24"><path d="M4.5 9.5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm15 7c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg><span>Pet Photo</span></div></div>
+            <div class="gallery-item"><div class="gallery-placeholder"><svg viewBox="0 0 24 24"><path d="M4.5 9.5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm15 7c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg><span>Pet Photo</span></div></div>
+            <div class="gallery-item"><div class="gallery-placeholder"><svg viewBox="0 0 24 24"><path d="M4.5 9.5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm15 7c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg><span>Pet Photo</span></div></div>
+            <div class="gallery-item"><div class="gallery-placeholder"><svg viewBox="0 0 24 24"><path d="M4.5 9.5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm15 7c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg><span>Pet Photo</span></div></div>
+            <div class="gallery-item"><div class="gallery-placeholder"><svg viewBox="0 0 24 24"><path d="M4.5 9.5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm15 7c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg><span>Pet Photo</span></div></div>
+            <div class="gallery-item"><div class="gallery-placeholder"><svg viewBox="0 0 24 24"><path d="M4.5 9.5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm15 7c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg><span>Pet Photo</span></div></div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="section-header fade-in">
+            <h2>What Pet Parents Say</h2>
+            <p>Real reviews from real clients who trust us with their fur babies.</p>
+        </div>
+        <div class="testimonial-grid">
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"The best mobile veterinarian in Tampa. Jeanne has been seeing my 2 dogs for over 10 years and is very thorough in their check ups. It's very nice that they have a full veterinary office in their vehicle."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">M</div>
+                    <div class="author-info">
+                        <div class="name">Mikie W.</div>
+                        <div class="pet">Pet parent for 10+ years</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"Jeanne is an absolute angel from above. I had an emergency where my puppy jumped out the window. She was not only quick and efficient, but showed compassion to me and my pet."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">J</div>
+                    <div class="author-info">
+                        <div class="name">Verified Review</div>
+                        <div class="pet">Emergency care client</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"I have lung issues, so having her come to us makes it possible to still be with my pets when they are being treated. She is thorough, caring, gentle and absolutely the best!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">R</div>
+                    <div class="author-info">
+                        <div class="name">Rachel</div>
+                        <div class="pet">Multiple fur babies</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Area -->
+    <section class="service-area" id="areas">
+        <div class="area-container">
+            <div class="fade-in">
+                <h2>Serving Greater Tampa Bay</h2>
+                <p>We bring quality veterinary care to neighborhoods across the Tampa area. If you're not sure if we serve your area, just give us a call!</p>
+                <div class="area-list">
+                    <span class="area-tag">South Tampa</span>
+                    <span class="area-tag">West Tampa</span>
+                    <span class="area-tag">Hyde Park</span>
+                    <span class="area-tag">Palma Ceia</span>
+                    <span class="area-tag">Ybor City</span>
+                    <span class="area-tag">Seminole Heights</span>
+                    <span class="area-tag">Egypt Lake</span>
+                    <span class="area-tag">Lake Magdalene</span>
+                    <span class="area-tag">Carrollwood</span>
+                    <span class="area-tag">Lutz</span>
+                    <span class="area-tag">New Tampa</span>
+                    <span class="area-tag">Tampa Palms</span>
+                    <span class="area-tag">Temple Terrace</span>
+                    <span class="area-tag">Thonotosassa</span>
+                    <span class="area-tag">Seffner</span>
+                </div>
+            </div>
+            <div class="area-map fade-in">
+                <div class="area-map-placeholder">
+                    <p>📍 Tampa Bay Service Area Map<br><small>Coming Soon</small></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-image fade-in">
+                <div class="about-image-placeholder">
+                    <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    <p>Dr. Jeanne Hart<br><small>Photo Coming Soon</small></p>
+                </div>
+            </div>
+            <div class="about-content fade-in">
+                <h2>Meet Dr. Jeanne Hart</h2>
+                <p>Dr. Hart graduated from the Virginia-Maryland Regional College of Veterinary Medicine in 2001. Since then, she's dedicated her career to compassionate small animal care in the Tampa area.</p>
+                <p>Her primary interests are in dermatology and general medicine, with a special passion for helping anxious pets and senior animals receive the care they deserve — without the stress of a traditional clinic visit.</p>
+                <p>When she's not caring for Tampa's pets, Dr. Hart enjoys live music, kayaking on the Hillsborough River, and spending time with her own dogs, Bonzo and Jingo.</p>
+                <div class="about-credentials">
+                    <div class="credential">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        DVM, Class of 2001
+                    </div>
+                    <div class="credential">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        Licensed in Florida
+                    </div>
+                    <div class="credential">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        24 Years Experience
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-container fade-in">
+            <h2>Ready for Stress-Free Vet Care?</h2>
+            <p>Schedule an appointment and let us come to you. Your pet will thank you.</p>
+            <div class="cta-buttons">
+                <a href="tel:8135988505" class="btn btn-white">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    Call (813) 598-8505
+                </a>
+            </div>
+            <p class="cta-phone">Monday – Friday, 9am – 5:30pm</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </div>
+                    <div class="logo-text">
+                        Dr. Jeanne Hart
+                        <span>Mobile Veterinarian</span>
+                    </div>
+                </a>
+                <p>Bringing compassionate, stress-free veterinary care to Tampa Bay pets since 2010. Your pet deserves the best — in the comfort of home.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#services">Wellness Exams</a></li>
+                    <li><a href="#services">Vaccinations</a></li>
+                    <li><a href="#services">Dermatology</a></li>
+                    <li><a href="#services">Senior Pet Care</a></li>
+                    <li><a href="#services">End-of-Life Care</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#about">About Dr. Hart</a></li>
+                    <li><a href="#areas">Service Areas</a></li>
+                    <li><a href="https://www.facebook.com/pages/Tampa-Mobile-Veterinary-Services/131346773548158" target="_blank">Facebook</a></li>
+                </ul>
+            </div>
+            <div class="footer-column footer-contact">
+                <h4>Contact</h4>
+                <p>📞 <a href="tel:8135988505">(813) 598-8505</a></p>
+                <p>📠 (813) 598-9250</p>
+                <p>🕒 Mon-Fri: 9am - 5:30pm</p>
+                <p>📍 Serving Tampa Bay Area</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Dr. Jeanne Hart, DVM. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/pages/Tampa-Mobile-Veterinary-Services/131346773548158" target="_blank" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24"><path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile CTA Bar -->
+    <div class="mobile-cta-bar">
+        <a href="tel:8135988505">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            Call Now: (813) 598-8505
+        </a>
+    </div>
+
+    <script>
+        // Header scroll effect
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Fade in on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(el => observer.observe(el));
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
