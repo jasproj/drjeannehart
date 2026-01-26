@@ -725,6 +725,10 @@
                 display: none;
             }
             
+            .logo span {
+                display: none;
+            }
+            
             .hero-text h1 {
                 font-size: 2.2rem;
             }
@@ -745,12 +749,64 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
+            .trust-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
             .mobile-cta {
                 display: block;
             }
             
             .cta {
                 padding-bottom: 120px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 100px 15px 60px;
+            }
+            
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-tagline {
+                font-size: 1rem;
+            }
+            
+            .badge {
+                padding: 8px 14px;
+                font-size: 0.85rem;
+            }
+            
+            .btn-primary, .btn-secondary {
+                padding: 14px 24px;
+                font-size: 1rem;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+            }
+            
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .service-card {
+                padding: 25px 20px;
+            }
+            
+            .area-tags {
+                gap: 8px;
+            }
+            
+            .area-tag {
+                padding: 8px 14px;
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -760,8 +816,8 @@
     <header class="header">
         <div class="header-content">
             <div class="logo">
-                Dr. Jeanne Hart, DVM
-                <span>| Mobile Veterinary Services</span>
+                Tampa Mobile Veterinary Services
+                <span>| Dr. Jeanne Hart, DVM</span>
             </div>
             <a href="tel:8135551234" class="header-phone">📞 (813) 555-1234</a>
         </div>
