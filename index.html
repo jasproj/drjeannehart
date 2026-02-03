@@ -97,7 +97,7 @@
         
         /* Hero */
         .hero {
-            background: linear-gradient(135deg, var(--sky-blue) 0%, var(--sky-light) 50%, var(--grass-light) 100%);
+            background: linear-gradient(135deg, rgba(74,144,164,0.85) 0%, rgba(107,165,183,0.8) 50%, rgba(123,166,106,0.85) 100%), url('images/hero-bg.jpg') center/cover no-repeat;
             min-height: 90vh;
             display: flex;
             align-items: center;
@@ -219,26 +219,12 @@
             50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
         }
         
-        .hero-image-placeholder {
+        .hero-image-photo {
             width: 100%;
             aspect-ratio: 4/5;
-            background: rgba(255,255,255,0.15);
             border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.1rem;
-            text-align: center;
-            padding: 20px;
-        }
-        
-        .hero-image-placeholder svg {
-            width: 80px;
-            height: 80px;
-            fill: rgba(255,255,255,0.5);
-            margin-bottom: 1rem;
+            object-fit: cover;
+            display: block;
         }
         
         .floating-card {
@@ -480,18 +466,20 @@
         
         .gallery-item {
             aspect-ratio: 1;
-            background: linear-gradient(135deg, #e0e5ec, #f5f7fa);
             border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-light);
-            font-size: 0.85rem;
+            overflow: hidden;
             transition: transform 0.3s;
         }
         
         .gallery-item:hover {
             transform: scale(1.03);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
         
         /* Testimonials */
@@ -582,18 +570,13 @@
             align-items: center;
         }
         
-        .about-image-placeholder {
+        .about-image {
             width: 100%;
             aspect-ratio: 3/4;
-            background: rgba(255,255,255,0.2);
             border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255,255,255,0.7);
-            text-align: center;
-            padding: 20px;
-            border: 3px dashed rgba(255,255,255,0.4);
+            object-fit: cover;
+            display: block;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
         
         .about-text {
@@ -777,7 +760,7 @@
                 text-align: center;
             }
             
-            .about-image-placeholder {
+            .about-image {
                 max-width: 300px;
                 margin: 0 auto;
             }
@@ -909,10 +892,7 @@
             </div>
             <div class="hero-image">
                 <div class="hero-image-container">
-                    <div class="hero-image-placeholder">
-                        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-                        <p>Dr. Hart Photo<br><small>Coming Soon</small></p>
-                    </div>
+                    <img src="images/dr-hart.jpg" alt="Dr. Jeanne Hart with a happy patient" class="hero-image-photo">
                     <div class="floating-card floating-card-1">
                         <div class="stars">★★★★★</div>
                         <div class="text">"Best mobile vet in Tampa!"</div>
@@ -1023,14 +1003,14 @@
             <p>Some of the wonderful pets we've cared for</p>
         </div>
         <div class="gallery-grid">
-            <div class="gallery-item">[Pet 1]</div>
-            <div class="gallery-item">[Pet 2]</div>
-            <div class="gallery-item">[Pet 3]</div>
-            <div class="gallery-item">[Pet 4]</div>
-            <div class="gallery-item">[Pet 5]</div>
-            <div class="gallery-item">[Pet 6]</div>
-            <div class="gallery-item">[Pet 7]</div>
-            <div class="gallery-item">[Pet 8]</div>
+            <div class="gallery-item"><img src="images/gallery-1.jpg" alt="Chinese Crested patient" loading="lazy"></div>
+            <div class="gallery-item"><img src="images/gallery-2.jpg" alt="Happy pitbull patient" loading="lazy"></div>
+            <div class="gallery-item"><img src="images/gallery-3.jpg" alt="Black lab with bandana" loading="lazy"></div>
+            <div class="gallery-item"><img src="images/gallery-4.jpg" alt="Three adorable kittens" loading="lazy"></div>
+            <div class="gallery-item"><img src="images/gallery-5.jpg" alt="Two fluffy doodles" loading="lazy"></div>
+            <div class="gallery-item"><img src="images/gallery-6.jpg" alt="Australian Shepherd puppy" loading="lazy"></div>
+            <div class="gallery-item"><img src="images/gallery-7.jpg" alt="Senior dog relaxing" loading="lazy"></div>
+            <div class="gallery-item"><img src="images/gallery-8.jpg" alt="Beautiful Ragdoll cat" loading="lazy"></div>
         </div>
     </section>
 
@@ -1090,9 +1070,7 @@
     <!-- About -->
     <section class="about">
         <div class="about-content">
-            <div class="about-image-placeholder">
-                [Dr. Hart Photo]<br>Professional headshot
-            </div>
+            <img src="images/dr-hart.jpg" alt="Dr. Jeanne Hart, DVM" class="about-image">
             <div class="about-text">
                 <h2>Meet Dr. Jeanne Hart</h2>
                 <p>With 24 years of veterinary experience, Dr. Hart founded Tampa Mobile Veterinary Services in 2010 to provide personalized, compassionate care in the comfort of your home.</p>
