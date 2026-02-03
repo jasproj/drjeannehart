@@ -463,7 +463,7 @@
         }
         
         .gallery-carousel {
-            max-width: 500px;
+            max-width: 1000px;
             margin: 0 auto;
             position: relative;
         }
@@ -472,7 +472,6 @@
             position: relative;
             overflow: hidden;
             border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
         }
         
         .gallery-slides {
@@ -481,22 +480,30 @@
         }
         
         .gallery-slide {
-            min-width: 100%;
-            aspect-ratio: 1;
+            min-width: 25%;
+            padding: 8px;
+            box-sizing: border-box;
         }
         
         .gallery-slide img {
             width: 100%;
-            height: 100%;
+            aspect-ratio: 1;
             object-fit: cover;
             display: block;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-slide img:hover {
+            transform: scale(1.03);
         }
         
         .gallery-dots {
             display: flex;
             justify-content: center;
             gap: 8px;
-            margin-top: 20px;
+            margin-top: 25px;
             flex-wrap: wrap;
         }
         
@@ -526,19 +533,20 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.95);
             border: none;
-            width: 44px;
-            height: 44px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--text-dark);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
             transition: background 0.2s, transform 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
+            z-index: 5;
         }
         
         .gallery-nav:hover {
@@ -547,18 +555,21 @@
         }
         
         .gallery-nav.prev {
-            left: -22px;
+            left: -24px;
         }
         
         .gallery-nav.next {
-            right: -22px;
+            right: -24px;
         }
         
         .gallery-counter {
-            text-align: center;
-            margin-top: 15px;
-            color: var(--text-light);
-            font-size: 0.9rem;
+            display: none;
+        }
+        
+        @media (max-width: 900px) {
+            .gallery-slide {
+                min-width: 33.333%;
+            }
         }
         
         @media (max-width: 768px) {
@@ -570,6 +581,10 @@
                 max-width: 100%;
             }
             
+            .gallery-slide {
+                min-width: 50%;
+            }
+            
             .gallery-nav {
                 width: 40px;
                 height: 40px;
@@ -577,21 +592,34 @@
             }
             
             .gallery-nav.prev {
-                left: 10px;
+                left: 5px;
             }
             
             .gallery-nav.next {
-                right: 10px;
+                right: 5px;
+            }
+            
+            .gallery-counter {
+                display: block;
+                text-align: center;
+                margin-top: 15px;
+                color: var(--text-light);
+                font-size: 0.9rem;
             }
         }
         
         @media (max-width: 480px) {
             .gallery {
-                padding: 40px 15px;
+                padding: 40px 10px;
             }
             
-            .gallery-track {
-                border-radius: 15px;
+            .gallery-slide {
+                min-width: 100%;
+                padding: 5px;
+            }
+            
+            .gallery-slide img {
+                border-radius: 12px;
             }
             
             .gallery-dot {
@@ -603,6 +631,10 @@
                 width: 36px;
                 height: 36px;
                 font-size: 0.9rem;
+            }
+            
+            .gallery-dots {
+                display: none;
             }
         }
         
@@ -963,6 +995,9 @@
             .hero {
                 min-height: auto;
                 padding: 100px 20px 60px;
+                background-image: linear-gradient(135deg, rgba(224,247,250,0.92) 0%, rgba(178,235,242,0.92) 100%), url('images/gallery-18.jpg');
+                background-size: cover;
+                background-position: center top;
             }
             
             .hero-text h1 {
@@ -1168,7 +1203,7 @@
                 <h3>Vaccinations</h3>
                 <p>Core and lifestyle vaccines to keep your pet protected</p>
             </div>
-            <div class="service-card specialty">
+            <div class="service-card">
                 <div class="service-icon">🐾</div>
                 <h3>Puppy & Kitten Care</h3>
                 <p>First exams, vaccinations, and guidance for your newest family members</p>
@@ -1456,32 +1491,64 @@
         const galleryDotsContainer = document.getElementById('gallery-dots');
         const galleryImages = document.querySelectorAll('.gallery-slide');
         const galleryCounter = document.getElementById('gallery-current');
+        const totalImages = galleryImages.length;
         let galleryIndex = 0;
         
-        // Create gallery dots
-        galleryImages.forEach((_, i) => {
-            const dot = document.createElement('button');
-            dot.className = 'gallery-dot' + (i === 0 ? ' active' : '');
-            dot.addEventListener('click', () => goToGallerySlide(i));
-            galleryDotsContainer.appendChild(dot);
+        function getVisibleCount() {
+            const width = window.innerWidth;
+            if (width <= 480) return 1;
+            if (width <= 768) return 2;
+            if (width <= 900) return 3;
+            return 4;
+        }
+        
+        function getMaxIndex() {
+            return Math.max(0, totalImages - getVisibleCount());
+        }
+        
+        // Create gallery dots (for groups)
+        function createGalleryDots() {
+            galleryDotsContainer.innerHTML = '';
+            const maxIdx = getMaxIndex();
+            for (let i = 0; i <= maxIdx; i++) {
+                const dot = document.createElement('button');
+                dot.className = 'gallery-dot' + (i === galleryIndex ? ' active' : '');
+                dot.addEventListener('click', () => goToGallerySlide(i));
+                galleryDotsContainer.appendChild(dot);
+            }
+        }
+        
+        createGalleryDots();
+        window.addEventListener('resize', () => {
+            if (galleryIndex > getMaxIndex()) galleryIndex = getMaxIndex();
+            goToGallerySlide(galleryIndex);
+            createGalleryDots();
         });
         
-        const galleryDots = document.querySelectorAll('.gallery-dot');
-        
         function goToGallerySlide(index) {
-            galleryIndex = index;
-            gallerySlides.style.transform = `translateX(-${index * 100}%)`;
-            galleryDots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-            galleryCounter.textContent = index + 1;
+            const maxIdx = getMaxIndex();
+            galleryIndex = Math.max(0, Math.min(index, maxIdx));
+            const slideWidth = 100 / getVisibleCount();
+            gallerySlides.style.transform = `translateX(-${galleryIndex * slideWidth}%)`;
+            document.querySelectorAll('.gallery-dot').forEach((dot, i) => dot.classList.toggle('active', i === galleryIndex));
+            galleryCounter.textContent = galleryIndex + 1;
         }
         
         function nextGallerySlide() {
-            galleryIndex = (galleryIndex + 1) % galleryImages.length;
+            if (galleryIndex >= getMaxIndex()) {
+                galleryIndex = 0;
+            } else {
+                galleryIndex++;
+            }
             goToGallerySlide(galleryIndex);
         }
         
         function prevGallerySlide() {
-            galleryIndex = (galleryIndex - 1 + galleryImages.length) % galleryImages.length;
+            if (galleryIndex <= 0) {
+                galleryIndex = getMaxIndex();
+            } else {
+                galleryIndex--;
+            }
             goToGallerySlide(galleryIndex);
         }
         
