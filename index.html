@@ -97,7 +97,7 @@
         
         /* Hero */
         .hero {
-            background: linear-gradient(135deg, rgba(74,144,164,0.85) 0%, rgba(107,165,183,0.8) 50%, rgba(123,166,106,0.85) 100%), url('images/hero-bg.jpg') 20% center/cover no-repeat;
+            background: linear-gradient(135deg, var(--sky-blue) 0%, var(--sky-light) 50%, var(--grass-light) 100%);
             min-height: 90vh;
             display: flex;
             align-items: center;
@@ -491,7 +491,11 @@
         /* Testimonials */
         .testimonials {
             padding: 80px 20px;
-            background: linear-gradient(135deg, rgba(253,251,247,0.92) 0%, rgba(253,251,247,0.88) 100%), url('images/hero-bg.jpg') center/cover no-repeat;
+            background-color: var(--cream);
+            background-image: linear-gradient(135deg, rgba(253,251,247,0.85) 0%, rgba(253,251,247,0.82) 100%), url('images/hero-bg.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100% auto;
         }
         
         .testimonials-grid {
@@ -527,15 +531,11 @@
             color: var(--text-dark);
         }
         
-        .testimonial-source {
-            font-size: 0.85rem;
-            color: var(--text-light);
-        }
-        
         /* Service Area */
         .service-area {
             padding: 80px 20px;
             background: white;
+            overflow: hidden;
         }
         
         .area-content {
@@ -544,12 +544,25 @@
             text-align: center;
         }
         
+        .area-tags-wrapper {
+            overflow: hidden;
+            margin-top: 30px;
+        }
+        
         .area-tags {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
             gap: 12px;
-            margin-top: 30px;
+            animation: scroll-left 25s linear infinite;
+            width: max-content;
+        }
+        
+        .area-tags:hover {
+            animation-play-state: paused;
+        }
+        
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
         
         .area-tag {
@@ -559,6 +572,8 @@
             border-radius: 25px;
             font-weight: 600;
             font-size: 0.95rem;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
         
         /* About */
@@ -758,7 +773,7 @@
             }
             
             .testimonials-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
             
             .about-content {
@@ -804,6 +819,10 @@
             
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
             }
             
             .trust-content {
@@ -859,6 +878,7 @@
             
             .area-tags {
                 gap: 8px;
+                animation-duration: 20s;
             }
             
             .area-tag {
@@ -1028,21 +1048,33 @@
         <div class="testimonials-grid">
             <div class="testimonial-card">
                 <div class="testimonial-stars">★★★★★</div>
-                <p class="testimonial-text">"Dr. Hart is amazing! She came to our home and our anxious dog was so much calmer than at a regular vet. Highly recommend!"</p>
-                <div class="testimonial-author">Mikie W.</div>
-                <div class="testimonial-source">Google Review</div>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-stars">★★★★★</div>
-                <p class="testimonial-text">"When our cat needed emergency care, Dr. Hart came right away. Her compassion and expertise gave us peace of mind during a difficult time."</p>
+                <p class="testimonial-text">"Jeanne is an absolute angel from above. She was not only quick and efficient, but showed compassion to me and my pet. I've never met anyone so kind."</p>
                 <div class="testimonial-author">Verified Client</div>
-                <div class="testimonial-source">Google Review</div>
             </div>
             <div class="testimonial-card">
                 <div class="testimonial-stars">★★★★★</div>
-                <p class="testimonial-text">"The convenience is unbeatable, but it's Dr. Hart's genuine care for animals that keeps us coming back. She treats our pets like family."</p>
-                <div class="testimonial-author">Rachel M.</div>
-                <div class="testimonial-source">Google Review</div>
+                <p class="testimonial-text">"The best mobile veterinarian in Tampa. Jeanne has been seeing my 2 dogs for over 10 years and is very thorough in their check ups. It's so nice that they have a full veterinary office in their vehicle."</p>
+                <div class="testimonial-author">Verified Client</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"Dr. Hart and Rachel were INCREDIBLE. I rescued a feral cat that was scared and very traumatized. They handled her with such care and got all the bloodwork and shots done."</p>
+                <div class="testimonial-author">Verified Client</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"My baby Meika is a 20 year old senior cat. Dr. Hart and her assistant really spent quality time with her. The compassion they showed Meika and me was incredible."</p>
+                <div class="testimonial-author">Verified Client</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"Dr Hart took excellent care of my cat Panther. She went above and beyond to make my boy feel comfortable and loved. Truly a warmhearted, compassionate, and skilled vet."</p>
+                <div class="testimonial-author">Jojo H.</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"She comes to your home, no barking dogs, no stress. Her and her vet tech Rachel take their time and are very kind and compassionate."</p>
+                <div class="testimonial-author">B.J.</div>
             </div>
         </div>
     </section>
@@ -1054,6 +1086,7 @@
                 <h2>Serving Tampa Bay</h2>
                 <p>We bring veterinary care to neighborhoods across the region</p>
             </div>
+            <div class="area-tags-wrapper">
             <div class="area-tags">
                 <span class="area-tag">South Tampa</span>
                 <span class="area-tag">Hyde Park</span>
@@ -1069,6 +1102,22 @@
                 <span class="area-tag">Temple Terrace</span>
                 <span class="area-tag">Thonotosassa</span>
                 <span class="area-tag">Seffner</span>
+                <!-- Duplicate for seamless loop -->
+                <span class="area-tag">South Tampa</span>
+                <span class="area-tag">Hyde Park</span>
+                <span class="area-tag">Palma Ceia</span>
+                <span class="area-tag">West Tampa</span>
+                <span class="area-tag">Ybor City</span>
+                <span class="area-tag">Seminole Heights</span>
+                <span class="area-tag">Carrollwood</span>
+                <span class="area-tag">Lake Magdalene</span>
+                <span class="area-tag">Lutz</span>
+                <span class="area-tag">New Tampa</span>
+                <span class="area-tag">Tampa Palms</span>
+                <span class="area-tag">Temple Terrace</span>
+                <span class="area-tag">Thonotosassa</span>
+                <span class="area-tag">Seffner</span>
+            </div>
             </div>
         </div>
     </section>
