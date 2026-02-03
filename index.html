@@ -456,79 +456,161 @@
             opacity: 0.9;
         }
         
-        /* Gallery */
+        /* Gallery - Polaroid Scatter */
         .gallery {
             padding: 80px 20px;
             background: white;
+            overflow: hidden;
         }
         
-        .gallery-grid {
+        .gallery-scatter {
             max-width: 1200px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 15px;
+            padding: 20px;
         }
         
-        .gallery-item {
-            aspect-ratio: 1;
-            border-radius: 15px;
-            overflow: hidden;
-            transition: transform 0.3s;
+        .polaroid {
+            background: white;
+            padding: 10px 10px 35px 10px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s, box-shadow 0.3s, z-index 0s;
+            cursor: pointer;
+            position: relative;
         }
         
-        .gallery-item:hover {
-            transform: scale(1.03);
+        .polaroid:hover {
+            transform: scale(1.08) rotate(0deg) !important;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+            z-index: 10;
         }
         
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
+        .polaroid img {
+            width: 150px;
+            height: 150px;
             object-fit: cover;
             display: block;
+        }
+        
+        .polaroid:nth-child(1) { transform: rotate(-3deg); }
+        .polaroid:nth-child(2) { transform: rotate(2deg); }
+        .polaroid:nth-child(3) { transform: rotate(-2deg); }
+        .polaroid:nth-child(4) { transform: rotate(4deg); }
+        .polaroid:nth-child(5) { transform: rotate(-1deg); }
+        .polaroid:nth-child(6) { transform: rotate(3deg); }
+        .polaroid:nth-child(7) { transform: rotate(-4deg); }
+        .polaroid:nth-child(8) { transform: rotate(1deg); }
+        .polaroid:nth-child(9) { transform: rotate(-2deg); }
+        .polaroid:nth-child(10) { transform: rotate(3deg); }
+        .polaroid:nth-child(11) { transform: rotate(-3deg); }
+        .polaroid:nth-child(12) { transform: rotate(2deg); }
+        .polaroid:nth-child(13) { transform: rotate(-1deg); }
+        .polaroid:nth-child(14) { transform: rotate(4deg); }
+        .polaroid:nth-child(15) { transform: rotate(-2deg); }
+        .polaroid:nth-child(16) { transform: rotate(1deg); }
+        .polaroid:nth-child(17) { transform: rotate(-3deg); }
+        .polaroid:nth-child(18) { transform: rotate(2deg); }
+        
+        @media (max-width: 768px) {
+            .polaroid img {
+                width: 120px;
+                height: 120px;
+            }
+            .polaroid {
+                padding: 8px 8px 28px 8px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .polaroid img {
+                width: 100px;
+                height: 100px;
+            }
+            .gallery-scatter {
+                gap: 10px;
+            }
         }
         
         /* Testimonials */
         .testimonials {
             padding: 80px 20px;
-            background-color: var(--cream);
-            background-image: linear-gradient(135deg, rgba(253,251,247,0.85) 0%, rgba(253,251,247,0.82) 100%), url('images/hero-bg.jpg');
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: 100% auto;
+            background: var(--cream);
+            overflow: hidden;
         }
         
-        .testimonials-grid {
-            max-width: 1100px;
+        .testimonials-carousel {
+            max-width: 800px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
+            position: relative;
         }
         
-        .testimonial-card {
+        .testimonials-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .testimonial-slide {
+            min-width: 100%;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        
+        .testimonial-content {
             background: white;
-            padding: 30px;
+            padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            text-align: center;
         }
         
         .testimonial-stars {
             color: #F6AD55;
-            font-size: 1.2rem;
-            margin-bottom: 15px;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
         }
         
         .testimonial-text {
             color: var(--text-medium);
             font-style: italic;
-            margin-bottom: 20px;
-            line-height: 1.7;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
         }
         
         .testimonial-author {
             font-weight: 700;
             color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+        
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--sky-light);
+            opacity: 0.4;
+            cursor: pointer;
+            transition: opacity 0.3s, transform 0.3s;
+            border: none;
+        }
+        
+        .carousel-dot.active {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+        
+        .carousel-dot:hover {
+            opacity: 0.8;
         }
         
         /* Service Area */
@@ -772,10 +854,6 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            .testimonials-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
             .about-content {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -814,14 +892,6 @@
             }
             
             .why-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .testimonials-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -1028,15 +1098,25 @@
             <h2>Our Happy Patients</h2>
             <p>Some of the wonderful pets we've cared for</p>
         </div>
-        <div class="gallery-grid">
-            <div class="gallery-item"><img src="images/gallery-1.jpg" alt="Chinese Crested patient" loading="lazy"></div>
-            <div class="gallery-item"><img src="images/gallery-2.jpg" alt="Happy pitbull patient" loading="lazy"></div>
-            <div class="gallery-item"><img src="images/gallery-3.jpg" alt="Black lab with bandana" loading="lazy"></div>
-            <div class="gallery-item"><img src="images/gallery-4.jpg" alt="Three adorable kittens" loading="lazy"></div>
-            <div class="gallery-item"><img src="images/gallery-5.jpg" alt="Two fluffy doodles" loading="lazy"></div>
-            <div class="gallery-item"><img src="images/gallery-6.jpg" alt="Australian Shepherd puppy" loading="lazy"></div>
-            <div class="gallery-item"><img src="images/gallery-7.jpg" alt="Senior dog relaxing" loading="lazy"></div>
-            <div class="gallery-item"><img src="images/gallery-8.jpg" alt="Beautiful Ragdoll cat" loading="lazy"></div>
+        <div class="gallery-scatter">
+            <div class="polaroid"><img src="images/gallery-1.jpg" alt="Happy patient" loading="lazy"></div>
+            <div class="polaroid"><img src="images/gallery-2.jpg" alt="Happy patient" loading="lazy"></div>
+            <div class="polaroid"><img src="images/gallery-3.jpg" alt="Happy patient" loading="lazy"></div>
+            <div class="polaroid"><img src="images/gallery-4.jpg" alt="Happy patient" loading="lazy"></div>
+            <div class="polaroid"><img src="images/gallery-5.jpg" alt="Happy patient" loading="lazy"></div>
+            <div class="polaroid"><img src="images/gallery-6.jpg" alt="Happy patient" loading="lazy"></div>
+            <div class="polaroid"><img src="images/gallery-7.jpg" alt="Happy patient" loading="lazy"></div>
+            <div class="polaroid"><img src="images/gallery-8.jpg" alt="Happy patient" loading="lazy"></div>
+            <div class="polaroid"><img src="images/gallery-9.jpg" alt="Happy patient" loading="lazy"></div>
+            <div class="polaroid"><img src="images/gallery-10.jpg" alt="Happy patient" loading="lazy"></div>
+            <div class="polaroid"><img src="images/gallery-11.jpg" alt="Happy patient" loading="lazy"></div>
+            <div class="polaroid"><img src="images/gallery-12.jpg" alt="Happy patient" loading="lazy"></div>
+            <div class="polaroid"><img src="images/gallery-13.jpg" alt="Happy patient" loading="lazy"></div>
+            <div class="polaroid"><img src="images/gallery-14.jpg" alt="Happy patient" loading="lazy"></div>
+            <div class="polaroid"><img src="images/gallery-15.jpg" alt="Happy patient" loading="lazy"></div>
+            <div class="polaroid"><img src="images/gallery-16.jpg" alt="Happy patient" loading="lazy"></div>
+            <div class="polaroid"><img src="images/gallery-17.jpg" alt="Happy patient" loading="lazy"></div>
+            <div class="polaroid"><img src="images/gallery-18.jpg" alt="Happy patient" loading="lazy"></div>
         </div>
     </section>
 
@@ -1045,37 +1125,52 @@
         <div class="section-header">
             <h2>What Pet Parents Say</h2>
         </div>
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <div class="testimonial-stars">★★★★★</div>
-                <p class="testimonial-text">"Jeanne is an absolute angel from above. She was not only quick and efficient, but showed compassion to me and my pet. I've never met anyone so kind."</p>
-                <div class="testimonial-author">Verified Client</div>
+        <div class="testimonials-carousel">
+            <div class="testimonials-track" id="testimonials-track">
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"Jeanne is an absolute angel from above. She was not only quick and efficient, but showed compassion to me and my pet. I've never met anyone so kind."</p>
+                        <div class="testimonial-author">— Verified Client</div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"The best mobile veterinarian in Tampa. Jeanne has been seeing my 2 dogs for over 10 years and is very thorough. It's so nice that they have a full veterinary office in their vehicle."</p>
+                        <div class="testimonial-author">— Verified Client</div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"Dr. Hart and Rachel were INCREDIBLE. I rescued a feral cat that was scared and very traumatized. They handled her with such care and got all the bloodwork and shots done."</p>
+                        <div class="testimonial-author">— Verified Client</div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"My baby Meika is a 20 year old senior cat. Dr. Hart and her assistant really spent quality time with her. The compassion they showed Meika and me was incredible."</p>
+                        <div class="testimonial-author">— Verified Client</div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"Dr Hart took excellent care of my cat Panther. She went above and beyond to make my boy feel comfortable and loved. Truly a warmhearted, compassionate, and skilled vet."</p>
+                        <div class="testimonial-author">— Jojo H.</div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"She comes to your home, no barking dogs, no stress. Her and her vet tech Rachel take their time and are very kind and compassionate."</p>
+                        <div class="testimonial-author">— B.J.</div>
+                    </div>
+                </div>
             </div>
-            <div class="testimonial-card">
-                <div class="testimonial-stars">★★★★★</div>
-                <p class="testimonial-text">"The best mobile veterinarian in Tampa. Jeanne has been seeing my 2 dogs for over 10 years and is very thorough in their check ups. It's so nice that they have a full veterinary office in their vehicle."</p>
-                <div class="testimonial-author">Verified Client</div>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-stars">★★★★★</div>
-                <p class="testimonial-text">"Dr. Hart and Rachel were INCREDIBLE. I rescued a feral cat that was scared and very traumatized. They handled her with such care and got all the bloodwork and shots done."</p>
-                <div class="testimonial-author">Verified Client</div>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-stars">★★★★★</div>
-                <p class="testimonial-text">"My baby Meika is a 20 year old senior cat. Dr. Hart and her assistant really spent quality time with her. The compassion they showed Meika and me was incredible."</p>
-                <div class="testimonial-author">Verified Client</div>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-stars">★★★★★</div>
-                <p class="testimonial-text">"Dr Hart took excellent care of my cat Panther. She went above and beyond to make my boy feel comfortable and loved. Truly a warmhearted, compassionate, and skilled vet."</p>
-                <div class="testimonial-author">Jojo H.</div>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-stars">★★★★★</div>
-                <p class="testimonial-text">"She comes to your home, no barking dogs, no stress. Her and her vet tech Rachel take their time and are very kind and compassionate."</p>
-                <div class="testimonial-author">B.J.</div>
-            </div>
+            <div class="carousel-dots" id="carousel-dots"></div>
         </div>
     </section>
 
@@ -1185,5 +1280,37 @@
     <div class="mobile-cta">
         <a href="tel:8135551234">📞 Call Dr. Hart — (813) 555-1234</a>
     </div>
+
+    <script>
+        // Testimonials Carousel
+        const track = document.getElementById('testimonials-track');
+        const dotsContainer = document.getElementById('carousel-dots');
+        const slides = document.querySelectorAll('.testimonial-slide');
+        let currentIndex = 0;
+        
+        // Create dots
+        slides.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        });
+        
+        const dots = document.querySelectorAll('.carousel-dot');
+        
+        function goToSlide(index) {
+            currentIndex = index;
+            track.style.transform = `translateX(-${index * 100}%)`;
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+        }
+        
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            goToSlide(currentIndex);
+        }
+        
+        // Auto-advance every 5 seconds
+        setInterval(nextSlide, 5000);
+    </script>
 </body>
 </html>
